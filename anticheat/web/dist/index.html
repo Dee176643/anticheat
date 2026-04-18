@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anticheat Console</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div id="app" class="shell hidden">
+        <aside class="sidebar">
+            <div>
+                <p class="eyebrow">Live Control</p>
+                <h1>Anticheat Console</h1>
+                <p id="dashboardUrl" class="muted"></p>
+            </div>
+            <div class="sidebar-actions">
+                <button class="nav-link active" data-tab="overview">Overview</button>
+                <button class="nav-link" data-tab="players">Players</button>
+                <button class="nav-link" data-tab="bans">Bans</button>
+            </div>
+            <div class="sidebar-actions">
+                <button id="refreshBtn" class="ghost">Refresh</button>
+                <button id="closeBtn" class="ghost danger">Close</button>
+            </div>
+        </aside>
+
+        <main class="panel">
+            <section id="overviewTab" class="tab active">
+                <div class="hero">
+                    <div>
+                        <p class="eyebrow">Realtime Snapshot</p>
+                        <h2>Server overview</h2>
+                    </div>
+                    <div class="badge-row">
+                        <span class="badge"><strong id="playerCount">0</strong> players</span>
+                        <span class="badge"><strong id="alertCount">0</strong> alerts</span>
+                        <span class="badge"><strong id="banCount">0</strong> bans</span>
+                    </div>
+                </div>
+                <section class="card">
+                    <div class="card-head">
+                        <h3>Recent Alerts</h3>
+                    </div>
+                    <div id="alertList" class="stack"></div>
+                </section>
+            </section>
+
+            <section id="playersTab" class="tab">
+                <section class="card">
+                    <div class="card-head">
+                        <h3>Live Players</h3>
+                    </div>
+                    <div id="playerList" class="stack"></div>
+                </section>
+            </section>
+
+            <section id="bansTab" class="tab">
+                <section class="card">
+                    <div class="card-head">
+                        <h3>Recent Bans</h3>
+                    </div>
+                    <div id="banList" class="stack"></div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
