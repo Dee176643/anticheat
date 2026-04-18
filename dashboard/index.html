@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Anticheat Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">Localhost Dashboard</p>
+                <h1>Custom Anticheat</h1>
+                <p class="subtle">Runs on your machine and reads the anticheat database directly.</p>
+            </div>
+            <button id="refreshBtn" class="ghost">Refresh</button>
+        </header>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span>Total Players</span>
+                <strong id="totalPlayers">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>Live Sessions</span>
+                <strong id="liveSessions">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>Banned Players</span>
+                <strong id="bannedPlayers">0</strong>
+            </article>
+        </section>
+
+        <section class="layout">
+            <article class="panel">
+                <div class="panel-head">
+                    <h2>Recent Alerts</h2>
+                </div>
+                <div id="alerts" class="stack"></div>
+            </article>
+
+            <article class="panel">
+                <div class="panel-head">
+                    <h2>Recent Bans</h2>
+                </div>
+                <div id="bans" class="stack"></div>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="panel-head">
+                <h2>Players</h2>
+            </div>
+            <div id="players" class="stack compact"></div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
