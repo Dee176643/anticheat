@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgesisGuard Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="dashboard-shell">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="brand-card">
+                    <div class="brand-icon">AC</div>
+                    <div>
+                        <p class="eyebrow">Server Panel</p>
+                        <h1>AgesisGuard</h1>
+                    </div>
+                </div>
+
+                <label class="token-card">
+                    <span class="token-label">Admin Token</span>
+                    <input id="tokenInput" type="password" placeholder="Paste Render ADMIN_TOKEN" autocomplete="off" />
+                    <small>Stored only in this browser.</small>
+                </label>
+
+                <nav class="sidebar-nav">
+                    <button class="nav-link active" data-tab="dashboard">Dashboard</button>
+                    <button class="nav-link" data-tab="players">Players</button>
+                    <button class="nav-link" data-tab="moderation">Moderation</button>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom">
+                <button id="saveTokenBtn" class="secondary-btn">Save Token</button>
+                <button id="refreshBtn" class="primary-btn">Refresh Data</button>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="topbar">
+                <div class="status-banner">
+                    <div>
+                        <p class="eyebrow">Overview</p>
+                        <h2>Live AgesisGuard control center</h2>
+                    </div>
+                    <span id="statusBadge" class="status-pill offline">No Data</span>
+                </div>
+                <div class="topbar-actions">
+                    <span id="apiUrl" class="api-url">API: /api/overview</span>
+                </div>
+            </header>
+
+            <section id="noticeBox" class="notice hidden"></section>
+
+            <section class="hero-grid">
+                <article class="hero-card server-card">
+                    <div>
+                        <p class="eyebrow">Protected Realm</p>
+                        <h3>Server activity</h3>
+                        <p class="hero-copy">Track players, sessions, detections, and ban history from one panel.</p>
+                    </div>
+                    <span class="live-pill">Online</span>
+                </article>
+
+                <article class="hero-card info-card">
+                    <div class="mini-stat">
+                        <span>AgesisGuard Build</span>
+                        <strong>MVP</strong>
+                    </div>
+                    <div class="mini-stat">
+                        <span>Protection Mode</span>
+                        <strong>Review First</strong>
+                    </div>
+                    <div class="mini-stat">
+                        <span>Dashboard Access</span>
+                        <strong id="tokenState">Token Needed</strong>
+                    </div>
+                </article>
+            </section>
+
+            <section class="stats-grid">
+                <article class="metric-card">
+                    <span>Total Players</span>
+                    <strong id="totalPlayers">0</strong>
+                </article>
+                <article class="metric-card">
+                    <span>Live Sessions</span>
+                    <strong id="liveSessions">0</strong>
+                </article>
+                <article class="metric-card">
+                    <span>Banned Players</span>
+                    <strong id="bannedPlayers">0</strong>
+                </article>
+                <article class="metric-card">
+                    <span>Recent Alerts</span>
+                    <strong id="alertCount">0</strong>
+                </article>
+            </section>
+
+            <section class="chart-panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="eyebrow">Activity Curve</p>
+                        <h3>Recent risk movement</h3>
+                    </div>
+                    <div class="panel-meta">
+                        <span id="chartLabel">Last 12 detections</span>
+                    </div>
+                </div>
+                <div class="chart-shell">
+                    <svg id="activityChart" viewBox="0 0 900 260" preserveAspectRatio="none"></svg>
+                </div>
+            </section>
+
+            <section class="content-grid">
+                <article class="panel tab-panel active" data-tab-panel="dashboard">
+                    <div class="panel-head">
+                        <div>
+                            <p class="eyebrow">Detection Feed</p>
+                            <h3>Recent Alerts</h3>
+                        </div>
+                    </div>
+                    <div id="alerts" class="list-stack"></div>
+                </article>
+
+                <article class="panel tab-panel active" data-tab-panel="dashboard moderation">
+                    <div class="panel-head">
+                        <div>
+                            <p class="eyebrow">Ban History</p>
+                            <h3>Recent Bans</h3>
+                        </div>
+                    </div>
+                    <div id="bans" class="list-stack"></div>
+                </article>
+            </section>
+
+            <section class="panel wide-panel tab-panel active" data-tab-panel="dashboard players moderation">
+                <div class="panel-head">
+                    <div>
+                        <p class="eyebrow">Player Registry</p>
+                        <h3>Players</h3>
+                    </div>
+                </div>
+                <div id="players" class="player-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
